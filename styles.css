@@ -7,10 +7,10 @@
     --bg-light: #f8f9fa;
     --text-dark: #333333;
 
-    --gradient-brand: linear-gradient(90deg, var(--crunch-red) 0%, var(--crunch-orange) 100%);
+    --gradient-brand: linear-gradient(135deg, var(--crunch-red) 0%, var(--crunch-orange) 100%);
 
-    --status-open: #4CAF50;
-    --status-closed: #E53935;
+    --status-open: #ffffff;
+    --status-closed: #ffffff;
 }
 
 * {
@@ -28,90 +28,98 @@ body {
     flex-direction: column;
 }
 
-/* Header mimics the dark navigation bar */
+/* Header mimics the dark box at the top */
 header {
+    background-color: var(--bg-light);
+    padding: 2rem 1rem 0 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header-box {
     background-color: var(--nav-bg);
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-    border-bottom: 4px solid var(--crunch-red);
+    width: 100%;
+    max-width: 400px;
+    /* Keep it as a box on larger screens too */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .brand-name {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--crunch-white);
     letter-spacing: 1px;
     text-transform: uppercase;
-    /* Adding a subtle text stroke to mimic the logo styling if desired, though clean white works well */
+    line-height: 1;
 }
 
 .subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #cccccc;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-weight: 700;
+    margin-top: 0.5rem;
 }
 
 /* Main container */
 .container {
     width: 100%;
+    max-width: 100%;
+    /* Go full width for the hero section */
+    padding: 0;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Primary Hero Card taking cues from the website's gradient banner */
-.status-card {
+/* Primary Hero Card - massive gradient area */
+.status-hero {
     background: var(--gradient-brand);
     color: var(--crunch-white);
     width: 100%;
-    padding: 4rem 2rem;
+    padding: 3rem 1rem 6rem;
+    /* Much larger padding */
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .status-label {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 #current-status {
     font-family: 'Oswald', sans-serif;
-    font-size: 7rem;
+    font-size: 6.5rem;
+    /* Immense size */
     font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
+    line-height: 0.9;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.status-card.open #current-status {
-    /* Keep white, or use an accent color */
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
     color: var(--crunch-white);
 }
 
-.status-card.closed #current-status {
-    color: var(--crunch-white);
-}
-
-/* Time display under status */
-#current-time {
-    font-size: 1.5rem;
+/* Time display under status (now time remaining) */
+#time-remaining {
+    font-size: 1.6rem;
     font-weight: 700;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    margin-bottom: 3.5rem;
+    /* Push the pill down */
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Inter', sans-serif;
 }
 
 /* "Today's Hours" pill/box mimicking the website buttons */
@@ -119,45 +127,49 @@ header {
     display: inline-block;
     background: var(--crunch-white);
     color: var(--crunch-red);
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    /* Slightly rounded, fairly square buttons like Crunch */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 3rem;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .hours-info h3 {
-    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.25rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.7rem;
     color: #666;
 }
 
 #today-hours {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--crunch-red);
+    line-height: 1;
 }
 
-/* Weekly Hours section (Standard white background, clean list) */
+/* Weekly Hours section */
 .all-hours {
     width: 100%;
     max-width: 600px;
     background: var(--crunch-white);
-    padding: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 3rem 2rem;
+    margin-top: -3rem;
+    /* overlap the gradient slightly for mobile feel */
+    margin-bottom: 4rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
 .all-hours h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
     color: var(--nav-bg);
     font-family: 'Oswald', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
 }
 
@@ -168,7 +180,7 @@ header {
 .all-hours li {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     border-bottom: 1px solid #eeeeee;
     font-size: 1.1rem;
 }
@@ -189,14 +201,18 @@ header {
 
 @media (max-width: 480px) {
     .brand-name {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     #current-status {
-        font-size: 3.5rem;
+        font-size: 5rem;
     }
 
-    .status-card {
-        padding: 3rem 1rem;
+    .status-hero {
+        padding: 3rem 1rem 5rem;
+    }
+
+    .all-hours {
+        margin-top: -2rem;
     }
 }
