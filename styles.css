@@ -1,0 +1,202 @@
+:root {
+    /* Precise colors extracted from the provided website screenshot */
+    --crunch-red: #ea2945;
+    --crunch-orange: #f29a1d;
+    --nav-bg: #111111;
+    --crunch-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --text-dark: #333333;
+
+    --gradient-brand: linear-gradient(90deg, var(--crunch-red) 0%, var(--crunch-orange) 100%);
+
+    --status-open: #4CAF50;
+    --status-closed: #E53935;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header mimics the dark navigation bar */
+header {
+    background-color: var(--nav-bg);
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 4px solid var(--crunch-red);
+}
+
+.brand-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--crunch-white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    /* Adding a subtle text stroke to mimic the logo styling if desired, though clean white works well */
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Main container */
+.container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Primary Hero Card taking cues from the website's gradient banner */
+.status-card {
+    background: var(--gradient-brand);
+    color: var(--crunch-white);
+    width: 100%;
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.status-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+#current-status {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.status-card.open #current-status {
+    /* Keep white, or use an accent color */
+    color: var(--crunch-white);
+}
+
+.status-card.closed #current-status {
+    color: var(--crunch-white);
+}
+
+/* Time display under status */
+#current-time {
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* "Today's Hours" pill/box mimicking the website buttons */
+.hours-info {
+    display: inline-block;
+    background: var(--crunch-white);
+    color: var(--crunch-red);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    /* Slightly rounded, fairly square buttons like Crunch */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hours-info h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+    color: #666;
+}
+
+#today-hours {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--crunch-red);
+}
+
+/* Weekly Hours section (Standard white background, clean list) */
+.all-hours {
+    width: 100%;
+    max-width: 600px;
+    background: var(--crunch-white);
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.all-hours h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--nav-bg);
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.all-hours ul {
+    list-style: none;
+}
+
+.all-hours li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 1.1rem;
+}
+
+.all-hours li:last-child {
+    border-bottom: none;
+}
+
+.day {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.hours {
+    text-align: right;
+    color: #555555;
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 2rem;
+    }
+
+    #current-status {
+        font-size: 3.5rem;
+    }
+
+    .status-card {
+        padding: 3rem 1rem;
+    }
+}
